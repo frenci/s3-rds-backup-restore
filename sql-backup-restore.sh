@@ -27,16 +27,17 @@ EOF
 }
 
 BASE=sql-restore
-S3_BUCKET_NAME=s3-${BASE}-$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]') # change if you want a custom bucket
-BACKUP_FILE_NAME=""
-BACKUP_FILE_DATABASE_NAME=""
+#S3_BUCKET_NAME=s3-${BASE}-$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]') # change if you want a custom bucket
+S3_BUCKET_NAME="s3-rds-backup-restore-al"
+BACKUP_FILE_NAME="AdventureWorks2014"
+BACKUP_FILE_DATABASE_NAME="AdventureWorks2014.bak"
 RDS_DB_NAME=db-${BASE}-$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
 RDS_SQL_USERNAME=user$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
 RDS_SQL_PASSWORD=pass$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
 RDS_OPTION_GROUP_NAME=option-group-${BASE}
-RDS_INSTANCE_CLASS=db.t2.small #change to db.r4.xlarge–16xlarge if using sqlserver-ee
+RDS_INSTANCE_CLASS=db.t3.small #change to db.r4.xlarge–16xlarge if using sqlserver-ee
 RDS_ENGINE_NAME=sqlserver-ex #SQL SERVER EXPRESS: max 10GB restore (if bigger, use sqlserver-ee)
-RDS_ENGINE_VERSION=14.00
+RDS_ENGINE_VERSION=15.00
 RDS_HOSTNAME="" #populated below
 IAM_ROLE_NAME="role-${BASE}"
 IAM_ROLE_ARN="" #populated below
