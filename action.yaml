@@ -1,0 +1,45 @@
+# Restore DB from backup in S3
+name: Restore DB from backup in S3
+
+# Control when the action will run. Triggers the workflkow on push or pull request event but only for the main branch.
+on:
+  push:
+    branches: [ main ]
+  pull request:
+    branches: [ main ]  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it.
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Logs you into the AWS Account
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    #Runs a set of commands using the runners shell
+    - name: Install SQLCMD
+      run: |
+        sudo ls /etc/yum.repos.d
+        sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
+        sudo yum remove unixODBC-utf16 unixODBC-utf16-devel
+        sudo yum install -y mssql-tools unixODBC-devel
+        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+        echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+        source ~/.bashrc
+
+    #Runs a single command using the runners shell
+    # - name: Run a one-line script
+    #   run: sh ./s3-rds-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
+
+    
+    
