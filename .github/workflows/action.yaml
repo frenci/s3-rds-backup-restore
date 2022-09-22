@@ -40,11 +40,9 @@ jobs:
         source ~/.bashrc
         sqlcmd -?
 
-
-
-###############################
-
-
+##############################################
+### Below steps is for installation on EC2 ### 
+##############################################
 
         # sudo ls /etc/yum.repos.d
         # sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
@@ -56,8 +54,8 @@ jobs:
 
 
     #Runs a single command using the runners shell
-    # - name: Run a one-line script
-    #   run: sh ./s3-rds-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
+    - name: Run a one-line script
+      run: sh ./s3-rds-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
 
     
     
