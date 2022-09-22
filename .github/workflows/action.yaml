@@ -55,10 +55,11 @@ jobs:
     #Runs a single command using the runners shell
     - name: Copy the backup from S3
       run: |
+        mkdir s3-rds-backup-restore-al
+        cd s3-rds-backup-restore-al
         aws s3 cp s3://s3-rds-backup-restore-al/AdventureWorks2014.bak ./
         pwd
         ls
-        cat sql-backup-restore.sh
 
     #Runs a single command using the runners shell
     - name: Run a one-line script
