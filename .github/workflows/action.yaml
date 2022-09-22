@@ -54,7 +54,7 @@ jobs:
 
     #Runs a single command using the runners shell
     - name: Copy the backup from S3
-      run: aws s3 cp s3://s3-rds-fr/AdventureWorks2014.bak ./
+      run: aws s3 cp s3://s3-rds-backup-restore-al/AdventureWorks2014.bak ./
 
     #Runs a single command using the runners shell
     - name: Run a one-line script
