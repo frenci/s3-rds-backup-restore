@@ -57,6 +57,7 @@ jobs:
       run: |
         mkdir s3-rds-backup-restore-al
         aws s3 cp s3://s3-rds-backup-restore-al/AdventureWorks2014.bak ./s3-rds-backup-restore-al
+        aws s3 cp s3://s3-rds-backup-restore-al/sql-backup-restore.sh ./s3-rds-backup-restore-al
         cd s3-rds-backup-restore-al
         ls -al
 
