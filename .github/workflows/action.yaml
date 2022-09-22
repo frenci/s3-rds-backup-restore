@@ -52,6 +52,9 @@ jobs:
         # echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
         # source ~/.bashrc
 
+    #Runs a single command using the runners shell
+    - name: Copy the backup from S3
+      run: aws s3 cp s3://s3-rds-fr/AdventureWorks2014.bak ./
 
     #Runs a single command using the runners shell
     - name: Run a one-line script
