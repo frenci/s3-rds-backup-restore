@@ -29,7 +29,7 @@ EOF
 BASE=sql-restore
 S3_BUCKET_NAME=s3-${BASE}-$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]') # change if you want a custom bucket
 BACKUP_FILE_NAME="AdventureWorks2014.bak"
-BACKUP_FILE_DATABASE_NAME="AdventureWorks2014"
+BACKUP_FILE_DATABASE_NAME="AdventureWorks2014.bak"
 RDS_DB_NAME=db-${BASE}-$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
 RDS_SQL_USERNAME=user$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
 RDS_SQL_PASSWORD=pass$(openssl rand -base64 10 | tr -d '[:punct:]' | tr -d '[:upper:]')
