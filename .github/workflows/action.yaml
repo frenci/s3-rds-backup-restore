@@ -57,13 +57,14 @@ jobs:
       run: |
         mkdir s3-rds-backup-restore-al
         aws s3 cp s3://s3-rds-backup-restore-al/AdventureWorks2014.bak ./s3-rds-backup-restore-al
-        aws s3 cp s3://s3-rds-backup-restore-al/sql-backup-restore.sh ./s3-rds-backup-restore-al
         cd s3-rds-backup-restore-al
         ls -al
 
     #Runs a single command using the runners shell
     - name: Run a one-line script
-      run: sh ./sql-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
+      run: |
+        cd s3-rds-backup-restore-al
+        sh ./sql-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
 
     
     
