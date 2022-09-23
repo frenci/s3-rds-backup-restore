@@ -64,6 +64,7 @@ jobs:
     - name: Run a one-line script
       run: |
         cd s3-rds-backup-restore-al
+        ls -al
         sh ./sql-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
 
     
