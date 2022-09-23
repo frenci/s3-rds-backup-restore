@@ -65,6 +65,7 @@ jobs:
       run: |
         cd s3-rds-backup-restore-al
         ls -al
+        chmod +x sql-backup-restore.sh
         sh ./sql-backup-restore.sh -f AdventureWorks2014.bak -d AdventureWorks2014
 
     
