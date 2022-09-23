@@ -56,7 +56,6 @@ jobs:
     - name: Copy the backup from S3
       run: |
         aws s3 cp s3://s3-rds-backup-restore-al/AdventureWorks2014.bak ./
-        cd s3-rds-backup-restore-al
         ls -al
 
     #Runs a single command using the runners shell
